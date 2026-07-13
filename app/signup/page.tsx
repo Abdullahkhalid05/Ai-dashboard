@@ -20,7 +20,7 @@ const Page = () => {
     setLoading(true)
     setError("")
 
-    const response = await fetch("/api/auth/signup", {
+    const response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password })

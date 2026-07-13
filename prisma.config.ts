@@ -9,3 +9,8 @@ export default defineConfig({
     url: process.env.DATABASE_URL,
   },
 })
+
+//this join prisma to prisma schema and the database
+// prisma orm object relation mapping connects orm connect apps written in oop to a database 
+
+//
