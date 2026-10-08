@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Users, FolderOpen, CheckSquare, UserCircle } from 'lucide-react'
+import Link from 'next/link'
 
 export default async function DashboardPage() {
   const clientCount = await prisma.client.count()
@@ -15,7 +16,8 @@ export default async function DashboardPage() {
       icon: UserCircle,
       description: 'Registered accounts',
       color: 'text-blue-500',
-      bg: 'bg-blue-500/10'
+      bg: 'bg-blue-500/10',
+      href: '/dashboard'
     },
     { 
       label: 'Total Clients', 
@@ -23,7 +25,8 @@ export default async function DashboardPage() {
       icon: Users,
       description: 'Active clients',
       color: 'text-violet-500',
-      bg: 'bg-violet-500/10'
+      bg: 'bg-violet-500/10',
+      href: '/dashboard/clients'
     },
     { 
       label: 'Total Projects', 
@@ -31,7 +34,8 @@ export default async function DashboardPage() {
       icon: FolderOpen,
       description: 'Ongoing projects',
       color: 'text-orange-500',
-      bg: 'bg-orange-500/10'
+      bg: 'bg-orange-500/10',
+      href: '/dashboard/projects'
     },
     { 
       label: 'Total Tasks', 
@@ -39,7 +43,8 @@ export default async function DashboardPage() {
       icon: CheckSquare,
       description: 'Tasks created',
       color: 'text-green-500',
-      bg: 'bg-green-500/10'
+      bg: 'bg-green-500/10' , 
+      href:'/dashboard/tasks'
     },
   ]
 
@@ -52,6 +57,7 @@ export default async function DashboardPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => (
+         <Link key={stat.label}  href={stat.href}>
           <Card key={stat.label} className="border-0 shadow-sm">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -66,6 +72,7 @@ export default async function DashboardPage() {
               <p className="text-xs text-muted-foreground mt-1">{stat.description}</p>
             </CardContent>
           </Card>
+          </Link>
         ))}
       </div>
     </div>

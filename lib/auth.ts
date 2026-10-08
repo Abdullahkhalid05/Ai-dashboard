@@ -1,7 +1,5 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-//how user could login differently and CredentialsProvider mean we are
-//allowing only user and password method
 import { prisma } from './prisma'
 import bcrypt from 'bcryptjs'
 

@@ -28,7 +28,17 @@ try {
       },
     });
     if (newUser) {
-      return NextResponse.json({ message: "New user created" }, { status: 201 });
+     return NextResponse.json(
+      {
+        message: "User created successfully",
+        user: {
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+        },
+      },
+      { status: 201 }
+    );
     }
 } catch (error) {
      return NextResponse.json(
